@@ -67,7 +67,7 @@ function ContactWithoutCaptcha() {
       </p>
       <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
         <p className="text-sm text-[#d3d8e8]">
-          If you have any questions or concerns, please don't hesitate to contact me.
+          If you have any questions or concerns, please do not hesitate to contact me.
         </p>
         
         <div className="mt-6 flex flex-col gap-4">
