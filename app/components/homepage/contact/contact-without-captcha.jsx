@@ -50,7 +50,7 @@ function ContactWithoutCaptcha() {
       // const teleResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
 
       // Check if both the email and API calls were successful
-      if (emailResponse.status === 200 || teleResponse.status === 200) {
+      if (emailResponse.status === 200) {
         toast.success('Message sent successfully!');
         setUserInput({ name: '', email: '', message: '' }); // Clear form on success
       }
