@@ -41,10 +41,15 @@ function ContactWithoutCaptcha() {
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const templateParams = {
+      from_name: userInput.name,
+      from_email: userInput.email,
+      message: userInput.message + " from " + userInput.email,
+    };
 
     try {
       // Send email via EmailJS
-      const emailResponse = await emailjs.send(serviceID, templateID, userInput, publicKey).then((val)=>{console.log(val)});
+      const emailResponse = await emailjs.send(serviceID, templateID, templateParams, publicKey).then((val)=>{console.log(val)});
 
       // Make an additional API call via axios (optional)
       // const teleResponse = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
@@ -57,6 +62,7 @@ function ContactWithoutCaptcha() {
     } catch (error) {
       console.error("Error sending email:", error);
       // toast.error("Failed to send message. Please try again.");
+      setUserInput({ name: '', email: '', message: '' }); 
     }
   };
 
